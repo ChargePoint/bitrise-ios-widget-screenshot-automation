@@ -20,8 +20,8 @@ extension XCTestCase {
         app.tap()
         self.addUIInterruptionMonitor(withDescription: "Handling system alerts") { element in
             if (element.buttons.count > 2) {
-                // this is the case for location where 3 are 3 cases so we will just pick the first one which is use location
-                // while in app
+                // this is the case for location where there are 3 cases so we will pick the second option which is
+                // use location while in app
                 let whileInUseButton = element.buttons.secondLastMatch
                 if (whileInUseButton.exists) {
                     whileInUseButton.tap()
