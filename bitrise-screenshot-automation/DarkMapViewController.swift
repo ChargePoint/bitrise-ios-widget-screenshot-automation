@@ -9,7 +9,7 @@
 import MapKit
 import UIKit
 
-enum Location {
+enum ZoomLocation {
     case Default
     case SanFrancisco
     case NewYork
@@ -30,8 +30,8 @@ enum Location {
 }
 
 class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-    var locationList: [Location] = [.Default, .SanFrancisco, .NewYork, .Chicago]
-    var coordinateDict: Dictionary<Location, (Double, Double)> = [.Default: (54.5260, -105.2551), .SanFrancisco: (37.7749, -122.4194), .NewYork: (40.7128, -74.0060), .Chicago: (41.8781, -87.6298)]
+    var locationList: [ZoomLocation] = [.Default, .SanFrancisco, .NewYork, .Chicago]
+    var coordinateDict: Dictionary<ZoomLocation, (Double, Double)> = [.Default: (54.5260, -105.2551), .SanFrancisco: (37.7749, -122.4194), .NewYork: (40.7128, -74.0060), .Chicago: (41.8781, -87.6298)]
     
     @IBOutlet weak var mapView: MKMapView?
     @IBOutlet var locationPickerView: UIPickerView!
