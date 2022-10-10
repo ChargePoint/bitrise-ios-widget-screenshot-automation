@@ -20,7 +20,7 @@ struct SampleWidget: Widget {
             SampleWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")
-        .description("Explore your favorite cities.")
+        .description(NSLocalizedString("Explore your favorite cities.", comment: ""))
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular])
     }
 }

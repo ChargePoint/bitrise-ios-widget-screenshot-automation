@@ -59,8 +59,10 @@ extension XCUIApplication {
 }
 
 extension XCUIElementQuery {
+    var secondMatch: XCUIElement {return self.element(boundBy: 1)}
     var lastMatch: XCUIElement { return self.element(boundBy: self.count - 1) }
     var secondLastMatch: XCUIElement { return self.element(boundBy: self.count - 2) }
+    var thirdLastMatch: XCUIElement { return self.element(boundBy: self.count - 3) }
 }
 
 class bitrise_screenshot_automationUITests: XCTestCase {
@@ -147,6 +149,48 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         doneButton.tap()
         
         app.activate()
+    }
+    
+    func testHomeScreenWidgetScreenshot() throws {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.activate()
+        
+        addHomeScreenWidget(isMediumSize: false)
+        addHomeScreenWidget(isMediumSize: true)
+        
+        self.saveScreenshot("MyAutomation_homeScreenWidgets")
+        
+        removeHomeScreenWidget()
+        removeHomeScreenWidget()
+    }
+    
+    func removeHomeScreenWidget() {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.press(forDuration: 3)
+        
+        springboard.otherElements["Home screen icons"].children(matching: .other).element.children(matching: .other).element.children(matching: .icon).element(boundBy: 1).children(matching: .icon).matching(identifier: "bitrise-screenshot-automation").element(boundBy: 0).buttons["DeleteButton"].tap()
+        springboard.alerts.firstMatch.buttons.lastMatch.tap()
+        springboard.buttons.secondMatch.tap()
+    }
+    
+    func addHomeScreenWidget(isMediumSize: Bool) {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.press(forDuration: 3)
+        
+        springboard.buttons.firstMatch.tap()
+
+        springboard.searchFields.firstMatch.tap()
+        
+        springboard.typeText("bitrise-screenshot-automation")
+        springboard.collectionViews.cells["bitrise-screenshot-automation"].children(matching: .other).element.children(matching: .other).element.tap()
+        
+        if (isMediumSize) {
+            springboard.swipe(direction: .Left, numSwipes: 1)
+        }
+        
+        springboard.buttons.thirdLastMatch.tap()
+        
+        springboard.buttons.secondMatch.tap()
     }
 
 //    func testLaunchPerformance() throws {

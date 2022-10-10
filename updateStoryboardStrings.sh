@@ -24,3 +24,5 @@ cd "./bitrise-screenshot-automation"
 mkdir en.lproj
 cd "./Localization/Base.lproj"
 generate_storyboard_strings
+
+rm -rf "../../en.lproj"

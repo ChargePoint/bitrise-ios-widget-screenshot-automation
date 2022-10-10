@@ -10,5 +10,6 @@ cp "./en.lproj/Localizable_UTF8.strings" "./Localization/Base.lproj/Localizable.
 cp "./en.lproj/Localizable_UTF8.strings" "./Localization/en.lproj/Localizable.strings"
 rm -rf "en.lproj"
 
-printf "\nGenerating storyboard strings\n"
-./updateStoryboardStrings
+cd ..
+
+./updateStoryboardStrings.sh

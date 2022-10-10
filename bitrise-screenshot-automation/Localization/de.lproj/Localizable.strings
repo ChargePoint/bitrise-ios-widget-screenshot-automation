@@ -1,7 +1,11 @@
-/* 
-  Localizable.strings
-  bitrise-screenshot-automation
+/* No comment provided by engineer. */
+"Edit configuration to explore a location." = "Bearbeiten Sie die Konfiguration, um einen Ort zu erkunden.";
 
-  Created by Rishab Sukumar on 10/7/22.
-  Copyright © 2022 ChargePoint, Inc. All rights reserved.
-*/
+/* No comment provided by engineer. */
+"Explore your favorite cities." = "Entdecken Sie Ihre Lieblingsstädte.";
+
+/* No comment provided by engineer. */
+"Places near %@" = "Orte in der Nähe von %@";
+
+/* No comment provided by engineer. */
+"Places near San Jose" = "Orte in der Nähe von San José";
