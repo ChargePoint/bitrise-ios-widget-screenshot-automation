@@ -22,6 +22,7 @@
 		5410AA0428EE4D52005EC200 /* SampleWidgetAccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410AA0328EE4D52005EC200 /* SampleWidgetAccessoryRectangularView.swift */; };
 		5410AA0628EE5B47005EC200 /* SampleWidgetMockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410AA0528EE5B47005EC200 /* SampleWidgetMockView.swift */; };
 		549BF5EB28F0C09B00323163 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 549BF5ED28F0C09B00323163 /* Localizable.strings */; };
+		549BF5FD28F4B8AA00323163 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 549BF5ED28F0C09B00323163 /* Localizable.strings */; };
 		62C8B20B244ECCA800C1AC78 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */; };
 		62C8B20E244ECCA800C1AC78 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */; };
 		62C8B211244ECCA800C1AC78 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */; };
@@ -463,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5410A9EF28ECF7E6005EC200 /* Assets.xcassets in Resources */,
+				549BF5FD28F4B8AA00323163 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
