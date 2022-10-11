@@ -135,7 +135,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
 
         springboard.swipe(direction: .Up, numSwipes: 1)
         let todayLabel = springboard.staticTexts["Today Label"]
-        todayLabel.waitForExistence(timeout: 3)
+        XCTAssertTrue(todayLabel.waitForExistence(timeout: 3))
         
         self.saveScreenshot("MyAutomation_todayWidget")
         
@@ -164,6 +164,67 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         removeHomeScreenWidget()
     }
     
+    func testLockScreenWidgetScreenshot() throws {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.activate()
+        
+        let coord1 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let coord2 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 2))
+        coord1.press(forDuration: 0.1, thenDragTo: coord2)
+        
+        addLockScreenWidget()
+        
+        self.saveScreenshot("MyAutomation_lockScreenWidget")
+        
+        removeLockScreenWidget()
+    }
+    
+    func addLockScreenWidget() {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.press(forDuration: 3)
+    
+        springboard.buttons.matching(identifier: "posterboard-customize-button").firstMatch.tap()
+        
+        springboard.collectionViews["posterboard-collection-view"].cells.firstMatch.tap()
+        
+        let posterboard = XCUIApplication(bundleIdentifier: "com.apple.PosterBoard")
+        
+        posterboard.buttons.lastMatch.tap()
+        
+        posterboard.cells["bitrise-screenshot-automation"].tap()
+        
+        springboard.buttons.lastMatch.tap()
+        
+        springboard.buttons.firstMatch.tap()
+        
+        springboard.buttons.firstMatch.tap()
+        
+        springboard.buttons.secondMatch.tap()
+        
+        springboard.tap()
+    }
+    
+    func removeLockScreenWidget() {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.press(forDuration: 3)
+    
+        springboard.buttons.matching(identifier: "posterboard-customize-button").firstMatch.tap()
+        
+        springboard.collectionViews["posterboard-collection-view"].cells.firstMatch.tap()
+        
+        let posterboard = XCUIApplication(bundleIdentifier: "com.apple.PosterBoard")
+        
+        posterboard.buttons.firstMatch.tap()
+        
+        posterboard.buttons.firstMatch.tap()
+        
+        posterboard.buttons.firstMatch.tap()
+        
+        posterboard.buttons.secondMatch.tap()
+        
+        springboard.tap()
+    }
+    
     func removeHomeScreenWidget() {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.press(forDuration: 3)
@@ -182,7 +243,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         springboard.searchFields.firstMatch.tap()
         
         springboard.typeText("bitrise-screenshot-automation")
-        springboard.collectionViews.cells["bitrise-screenshot-automation"].children(matching: .other).element.children(matching: .other).element.tap()
+        springboard.collectionViews.cells["bitrise-screenshot-automation"].tap()
         
         if (isMediumSize) {
             springboard.swipe(direction: .Left, numSwipes: 1)
