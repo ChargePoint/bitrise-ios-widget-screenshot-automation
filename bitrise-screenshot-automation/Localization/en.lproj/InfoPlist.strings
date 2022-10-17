@@ -1,0 +1,6 @@
+/* Bundle name */
+"CFBundleName" = "bitrise-screenshot-automation";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Your location will be used on the map.";
+

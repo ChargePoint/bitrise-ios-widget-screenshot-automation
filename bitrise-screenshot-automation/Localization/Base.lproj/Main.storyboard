@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hc1-W2-7w2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hc1-W2-7w2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,8 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="f9k-1q-zeE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="VAb-0r-Teb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="h9h-VC-QjK"/>
                 </viewController>
@@ -55,35 +57,35 @@
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1h-yl-pQm" userLabel="City View">
                                 <rect key="frame" x="0.0" y="734" width="414" height="79"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dF0-gk-XEk">
-                                        <rect key="frame" x="20" y="29" width="80" height="21"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="City Name"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-cQ-Jta">
-                                        <rect key="frame" x="354" y="24.5" width="40" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-cQ-Jta">
+                                        <rect key="frame" x="338" y="20" width="56" height="39"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Zoom"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Zoom"/>
                                         <connections>
                                             <action selector="zoomToCityTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="bT3-bX-l75"/>
                                         </connections>
                                     </button>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jJ-mO-bKq">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <accessibility key="accessibilityConfiguration" identifier="City View"/>
                                 <constraints>
-                                    <constraint firstItem="dF0-gk-XEk" firstAttribute="centerY" secondItem="U1h-yl-pQm" secondAttribute="centerY" id="CcQ-MK-IYl"/>
+                                    <constraint firstAttribute="bottom" secondItem="8jJ-mO-bKq" secondAttribute="bottom" id="OZW-lc-U3d"/>
+                                    <constraint firstItem="8jJ-mO-bKq" firstAttribute="centerY" secondItem="U1h-yl-pQm" secondAttribute="centerY" id="Omf-kQ-GnT"/>
+                                    <constraint firstItem="8jJ-mO-bKq" firstAttribute="top" secondItem="U1h-yl-pQm" secondAttribute="top" id="UYf-CG-u8M"/>
                                     <constraint firstAttribute="height" constant="79" id="ZoD-RA-r1a"/>
-                                    <constraint firstItem="dF0-gk-XEk" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="v5y-cQ-Jta" secondAttribute="leading" id="dJ6-0F-JFj"/>
-                                    <constraint firstItem="v5y-cQ-Jta" firstAttribute="firstBaseline" secondItem="dF0-gk-XEk" secondAttribute="firstBaseline" id="e7q-TC-mUy"/>
+                                    <constraint firstItem="v5y-cQ-Jta" firstAttribute="leading" secondItem="8jJ-mO-bKq" secondAttribute="trailing" constant="18" id="h9c-1T-MEz"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="v5y-cQ-Jta" secondAttribute="trailing" id="jrV-wS-onF"/>
-                                    <constraint firstItem="dF0-gk-XEk" firstAttribute="leading" secondItem="U1h-yl-pQm" secondAttribute="leadingMargin" id="mXt-0V-rn6"/>
+                                    <constraint firstItem="v5y-cQ-Jta" firstAttribute="centerY" secondItem="8jJ-mO-bKq" secondAttribute="centerY" id="ktA-eI-O0u"/>
+                                    <constraint firstItem="8jJ-mO-bKq" firstAttribute="leading" secondItem="U1h-yl-pQm" secondAttribute="leading" id="utX-2g-7W0"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <accessibility key="accessibilityConfiguration" identifier="Dark Map View"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="U1h-yl-pQm" secondAttribute="trailing" id="1t5-bw-O3Q"/>
@@ -93,20 +95,28 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="U1h-yl-pQm" secondAttribute="bottom" id="XoM-W2-8k1"/>
                             <constraint firstItem="InI-86-36X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YCp-5c-b3r"/>
                             <constraint firstItem="InI-86-36X" firstAttribute="bottom" secondItem="U1h-yl-pQm" secondAttribute="top" id="cJB-Zl-wRz"/>
+                            <constraint firstItem="U1h-yl-pQm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qeW-R1-2u5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Du7-i8-P4q"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="cityLabel" destination="dF0-gk-XEk" id="1UA-f3-Ddo"/>
+                        <outlet property="locationPickerView" destination="8jJ-mO-bKq" id="WCy-bY-vCC"/>
                         <outlet property="mapView" destination="InI-86-36X" id="dgd-iO-316"/>
-                        <outlet property="zoomButton" destination="v5y-cQ-Jta" id="sjs-y5-fEC"/>
+                        <outlet property="zoomButton" destination="v5y-cQ-Jta" id="22R-RM-dJP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-459" y="-542"/>
+            <point key="canvasLocation" x="-459.4202898550725" y="-542.41071428571422"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
