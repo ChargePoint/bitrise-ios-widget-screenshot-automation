@@ -165,6 +165,8 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         editLockScreenWidget()
         
+        sleep(3)
+        
         self.saveScreenshot("MyAutomation_configuredLockScreenWidget")
         
         removeLockScreenWidget()
@@ -256,7 +258,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         editHomeScreenWidgetConfig()
         
-        sleep(1)
+        sleep(3)
         
         self.saveScreenshot("MyAutomation_configuredHomeScreenWidget")
                 
