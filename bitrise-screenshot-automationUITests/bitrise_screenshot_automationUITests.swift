@@ -208,6 +208,8 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         posterboard.buttons.firstMatch.tap()
         posterboard.buttons.secondMatch.tap()
         
+        sleep(3)
+        
         self.saveScreenshot("MyAutomation_lockScreenWidgetConfiguration")
         
         springboard.buttons.secondMatch.tap()
@@ -269,7 +271,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         let widgetConfig = XCUIApplication(bundleIdentifier: "com.apple.WorkflowUI.WidgetConfigurationExtension")
         
-        sleep(1)
+        sleep(3)
         
         self.saveScreenshot("MyAutomation_homeScreenWidgetConfiguration")
         
