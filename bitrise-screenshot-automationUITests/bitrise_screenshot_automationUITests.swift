@@ -216,7 +216,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         springboard.buttons.secondMatch.tap()
         springboard.searchFields.firstMatch.tap()
-        springboard.typeText("San Jose\n")
+        springboard.typeText("Cupertino\n")
         springboard.cells.firstMatch.tap()
         springboard.buttons.secondMatch.tap()
         springboard.buttons.firstMatch.tap()
@@ -279,7 +279,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         widgetConfig.buttons.firstMatch.tap()
         widgetConfig.searchFields.firstMatch.tap()
-        widgetConfig.typeText("San Jose\n")
+        widgetConfig.typeText("Cupertino\n")
         widgetConfig.cells.firstMatch.tap()
         widgetConfig.buttons.secondMatch.tap()
         
