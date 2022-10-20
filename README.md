@@ -1,6 +1,8 @@
-#  bitrise-screenshot-automation
+#  bitrise-ios-widget-screenshot-automation
 
-This is an example project for the [first virtual Bitrise User Group (BUG) talk, "Automating Dark Mode Screenshots with Xcode 11".](https://youtu.be/SI8rQp8HaQU?t=190)
+This is an example project for the [MobileDevOps Summit session "iOS Widget Screenshot Automation".](https://www.mobiledevops.io/summit/agenda/session/1023791) Join us on Nov 10th, 2022 at 9:00 AM Pacific to learn more!
+
+Interested in the details of Dark Mode screenshot automation? Check out our previous [talk](https://youtu.be/SI8rQp8HaQU?t=190) and [example project](https://github.com/ChargePoint/bitrise-screenshot-automation/) on that subject!
 
 ## Setup
 
