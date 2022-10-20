@@ -9,3 +9,18 @@
 
 /* No comment provided by engineer. */
 "Places near San Jose" = "Orte in der Nähe von San José";
+
+/* No comment provided by engineer. */
+"Run sample with ${applicationName}" = "Beispiel mit ${applicationName} ausführen";
+
+/* No comment provided by engineer. */
+"Sample Shortcut" = "Beispielverknüpfung";
+
+/* No comment provided by engineer. */
+"Test completed successfully." = "Prüfung erfolgreich abgeschlossen.";
+
+/* No comment provided by engineer. */
+"Test sample with ${applicationName}" = "Testmuster mit ${applicationName}";
+
+/* No comment provided by engineer. */
+"This is a Sample Shortcut." = "Dies ist eine Beispielverknüpfung";

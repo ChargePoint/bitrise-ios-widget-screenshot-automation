@@ -9,3 +9,18 @@
 
 /* No comment provided by engineer. */
 "Places near San Jose" = "산호세 주변 장소";
+
+/* No comment provided by engineer. */
+"Run sample with ${applicationName}" = "${applicationName}으로 샘플 실행";
+
+/* No comment provided by engineer. */
+"Sample Shortcut" = "샘플 바로 가기";
+
+/* No comment provided by engineer. */
+"Test completed successfully." = "테스트가 성공적으로 완료되었습니다.";
+
+/* No comment provided by engineer. */
+"Test sample with ${applicationName}" = "${applicationName}을 사용한 테스트 샘플";
+
+/* No comment provided by engineer. */
+"This is a Sample Shortcut." = "샘플 바로가기입니다.";

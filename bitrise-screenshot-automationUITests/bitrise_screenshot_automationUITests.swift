@@ -316,6 +316,18 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         springboard.buttons.secondMatch.tap()
     }
+    
+    func testSiriShortcut() {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.activate()
+        XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Run sample with bitrise-screenshot-automation")
+        
+        let snippetView = XCUIApplication(bundleIdentifier: "com.apple.ShortcutsUI")
+        
+        sleep(3)
+        
+        self.saveScreenshot("MyAutomation_sampleSiriShortcut")
+    }
 
 //    func testLaunchPerformance() throws {
 //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

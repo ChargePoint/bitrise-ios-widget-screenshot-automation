@@ -23,6 +23,9 @@
 		549BF5FD28F4B8AA00323163 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 549BF5ED28F0C09B00323163 /* Localizable.strings */; };
 		549BF5FE28F60D8E00323163 /* SampleWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 549BF60128F60D8E00323163 /* SampleWidget.intentdefinition */; };
 		549BF5FF28F60D8E00323163 /* SampleWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 549BF60128F60D8E00323163 /* SampleWidget.intentdefinition */; };
+		54CDC8552901E5A8006365B1 /* AppShortcutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CDC8542901E5A8006365B1 /* AppShortcutProvider.swift */; };
+		54CDC8572901E5B4006365B1 /* SampleAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CDC8562901E5B4006365B1 /* SampleAppIntent.swift */; };
+		54CDC8592901EB8F006365B1 /* SampleShortcutSnippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CDC8582901EB8F006365B1 /* SampleShortcutSnippet.swift */; };
 		62C8B20B244ECCA800C1AC78 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */; };
 		62C8B20E244ECCA800C1AC78 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */; };
 		62C8B211244ECCA800C1AC78 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */; };
@@ -112,6 +115,9 @@
 		549BF60028F60D8E00323163 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/SampleWidget.intentdefinition; sourceTree = "<group>"; };
 		549BF60328F60D9300323163 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SampleWidget.strings; sourceTree = "<group>"; };
 		549BF60528F60D9300323163 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SampleWidget.strings; sourceTree = "<group>"; };
+		54CDC8542901E5A8006365B1 /* AppShortcutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcutProvider.swift; sourceTree = "<group>"; };
+		54CDC8562901E5B4006365B1 /* SampleAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppIntent.swift; sourceTree = "<group>"; };
+		54CDC8582901EB8F006365B1 /* SampleShortcutSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleShortcutSnippet.swift; sourceTree = "<group>"; };
 		62C8B209244ECCA800C1AC78 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +216,16 @@
 			path = SampleWidget;
 			sourceTree = "<group>";
 		};
+		54CDC8532901E57A006365B1 /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				54CDC8542901E5A8006365B1 /* AppShortcutProvider.swift */,
+				54CDC8562901E5B4006365B1 /* SampleAppIntent.swift */,
+				54CDC8582901EB8F006365B1 /* SampleShortcutSnippet.swift */,
+			);
+			path = AppIntents;
+			sourceTree = "<group>";
+		};
 		62C8B20C244ECCA800C1AC78 /* TodayWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +257,7 @@
 				62ECCB64244E1A4200AE8BE1 /* bitrise-screenshot-automationTests */,
 				62ECCB6F244E1A4200AE8BE1 /* bitrise-screenshot-automationUITests */,
 				62C8B20C244ECCA800C1AC78 /* TodayWidget */,
+				54CDC8532901E57A006365B1 /* AppIntents */,
 				5410A9EA28ECF7E5005EC200 /* SampleWidget */,
 				62ECCB4C244E1A3F00AE8BE1 /* Products */,
 				62E6DAED244E2BA800EC2C02 /* Frameworks */,
@@ -538,8 +555,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				549BF5FE28F60D8E00323163 /* SampleWidget.intentdefinition in Sources */,
+				54CDC8592901EB8F006365B1 /* SampleShortcutSnippet.swift in Sources */,
 				62ECCB53244E1A3F00AE8BE1 /* DarkMapViewController.swift in Sources */,
 				62ECCB4F244E1A3F00AE8BE1 /* AppDelegate.swift in Sources */,
+				54CDC8572901E5B4006365B1 /* SampleAppIntent.swift in Sources */,
+				54CDC8552901E5A8006365B1 /* AppShortcutProvider.swift in Sources */,
 				62ECCB51244E1A3F00AE8BE1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
