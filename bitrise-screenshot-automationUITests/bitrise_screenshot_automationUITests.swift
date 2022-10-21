@@ -18,6 +18,7 @@ enum SwipeDirection {
 extension XCTestCase {
     func handleAlerts(app: XCUIApplication) {
         app.tap()
+        // Handle UI interruptions such as alerts for location permissions
         self.addUIInterruptionMonitor(withDescription: "Handling system alerts") { element in
             if (element.buttons.count > 2) {
                 // this is the case for location where there are 3 cases so we will pick the second option which is
@@ -36,6 +37,7 @@ extension XCTestCase {
 }
 
 extension XCUIApplication {
+    // Extend XCUIApplication to swipe in a certain direction a certain number of times
     func swipe(direction: SwipeDirection, numSwipes: Int) {
         switch direction {
         case .Up:
@@ -59,6 +61,7 @@ extension XCUIApplication {
 }
 
 extension XCUIElementQuery {
+    // Extend XCUIElementQuery to have easy ways to access matches
     var secondMatch: XCUIElement {return self.element(boundBy: 1)}
     var lastMatch: XCUIElement { return self.element(boundBy: self.count - 1) }
     var secondLastMatch: XCUIElement { return self.element(boundBy: self.count - 2) }
@@ -77,6 +80,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        // Set up interruption handler
         self.handleAlerts(app: app)
     }
 
@@ -98,19 +102,26 @@ class bitrise_screenshot_automationUITests: XCTestCase {
 
     func testTodayWidgetScreenshot() throws {
         let app = XCUIApplication()
+        // The springboard app allows you to navigate the home screen
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.activate()
 
+        // Swipe until we get to the Today View
         springboard.swipe(direction: .Right, numSwipes: 2)
+        
+        // Swipe until edit button is visible
         springboard.swipe(direction: .Up, numSwipes: 2)
 
         let editButton = springboard.buttons.firstMatch
         XCTAssertTrue(editButton.waitForExistence(timeout: 3))
         editButton.tap()
 
+        // Swipe until Customize button is visible
         springboard.swipe(direction: .Up, numSwipes: 3)
         
         var customizeButton = springboard.buttons.secondLastMatch
+        
+        // If on an iPad or and iOS 16 iPhone, the customize button is the last match
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
             if #available(iOS 16, *) {
@@ -126,6 +137,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
     
         customizeButton.tap()
         
+        // Find and tap to add the TodayWidget
         let widgetNamePredicate = NSPredicate(format: "label CONTAINS[c] 'TodayWidget'")
         let addWidgetCells = springboard.cells.matching(widgetNamePredicate)
         addWidgetCells.buttons.firstMatch.tap()
@@ -155,6 +167,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.activate()
         
+        // Swipe down from the top to get to the lock screen
         let coord1 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
         let coord2 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 2))
         coord1.press(forDuration: 0.1, thenDragTo: coord2)
@@ -173,13 +186,17 @@ class bitrise_screenshot_automationUITests: XCTestCase {
     }
     
     func addLockScreenWidget() {
+        // Press and hold to edit lock screen
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.press(forDuration: 3)
     
+        // Tap Customize
         springboard.buttons.matching(identifier: "posterboard-customize-button").firstMatch.tap()
         
+        // Tap to customize Lock Screen
         springboard.collectionViews["posterboard-collection-view"].cells.firstMatch.tap()
         
+        // Use posterboard to navigate lock screen customization
         let posterboard = XCUIApplication(bundleIdentifier: "com.apple.PosterBoard")
         
         posterboard.buttons.lastMatch.tap()
@@ -207,6 +224,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         let posterboard = XCUIApplication(bundleIdentifier: "com.apple.PosterBoard")
         
+        // Tap on widget when in customize mode to edit the configuration
         posterboard.buttons.firstMatch.tap()
         posterboard.buttons.secondMatch.tap()
         
@@ -215,8 +233,12 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         self.saveScreenshot("MyAutomation_lockScreenWidgetConfiguration")
         
         springboard.buttons.secondMatch.tap()
+        
+        // Type Cupertino in search field
         springboard.searchFields.firstMatch.tap()
         springboard.typeText("Cupertino\n")
+        
+        // Select Cupertino and close configuration view
         springboard.cells.firstMatch.tap()
         springboard.buttons.secondMatch.tap()
         springboard.buttons.firstMatch.tap()
@@ -271,6 +293,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         springboard.press(forDuration: 3)
         springboard.icons.matching(identifier: "bitrise-screenshot-automation").firstMatch.tap()
         
+        // Use WidgetConfigurationExtension XCUIApplication to navigate the home screen widget configuration
         let widgetConfig = XCUIApplication(bundleIdentifier: "com.apple.WorkflowUI.WidgetConfigurationExtension")
         
         sleep(3)
@@ -283,6 +306,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         widgetConfig.cells.firstMatch.tap()
         widgetConfig.buttons.secondMatch.tap()
         
+        // Dismiss configuration
         springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).tap()
         
         springboard.buttons.secondMatch.tap()
@@ -308,6 +332,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         springboard.typeText("bitrise-screenshot-automation")
         springboard.collectionViews.cells["bitrise-screenshot-automation"].tap()
         
+        // Swipe to medium size widget if parameter passed is true
         if (isMediumSize) {
             springboard.swipe(direction: .Left, numSwipes: 1)
         }
@@ -320,9 +345,8 @@ class bitrise_screenshot_automationUITests: XCTestCase {
     func testSiriShortcut() {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.activate()
+        // Use XCUISiriService to pass text to Siri and invoke App Shortcut
         XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Run sample with bitrise-screenshot-automation")
-        
-        let snippetView = XCUIApplication(bundleIdentifier: "com.apple.ShortcutsUI")
         
         sleep(3)
         
