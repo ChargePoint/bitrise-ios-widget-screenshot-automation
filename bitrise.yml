@@ -161,7 +161,7 @@ app:
     BITRISE_DISTRIBUTION_METHOD: development
   - opts:
       is_expand: false
-    CHARGEPOINT_IOS_DEVICE: iPhone 11 Pro Max
+    CHARGEPOINT_IOS_DEVICE: iPhone 14 Pro
   - opts:
       is_expand: false
     CHARGEPOINT_IOS_DEVICE_LANGUAGE: en
