@@ -353,12 +353,29 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         self.saveScreenshot("MyAutomation_sampleSiriShortcut")
     }
 
-//    func testLaunchPerformance() throws {
-//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-//            // This measures how long it takes to launch your application.
-//            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-//                XCUIApplication().launch()
-//            }
-//        }
-//    }
+    func testNotificationCenter() {
+
+        let app = XCUIApplication()
+        let button = app.buttons["ZoomButton"]
+        XCTAssertTrue(button.exists)
+        button.tap()
+        handleAlerts(app: app)
+        // wait until the notifications permissions is accepted
+        // Springboard allows us to interact with the home screen
+
+            let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+
+            springboard.activate()
+            // Swipe down from the top to get to the lock screen to view notifications
+            sleep(2)
+            let coord1 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+
+            let coord2 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 2))
+
+            coord1.press(forDuration: 0.1, thenDragTo: coord2)
+
+            self.saveScreenshot("MyAutomation_Notification")
+
+        }
+    
 }
