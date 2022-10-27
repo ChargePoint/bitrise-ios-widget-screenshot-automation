@@ -19,6 +19,9 @@
 		5410AA0228EE4D43005EC200 /* SampleWidgetMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410AA0128EE4D43005EC200 /* SampleWidgetMediumView.swift */; };
 		5410AA0428EE4D52005EC200 /* SampleWidgetAccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410AA0328EE4D52005EC200 /* SampleWidgetAccessoryRectangularView.swift */; };
 		5410AA0628EE5B47005EC200 /* SampleWidgetMockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410AA0528EE5B47005EC200 /* SampleWidgetMockView.swift */; };
+		5457831F290B18340032B7A3 /* Double+DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457831E290B18340032B7A3 /* Double+DistanceUnit.swift */; };
+		54578320290B1AC10032B7A3 /* Double+DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457831E290B18340032B7A3 /* Double+DistanceUnit.swift */; };
+		54578321290B1ADA0032B7A3 /* Double+DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457831E290B18340032B7A3 /* Double+DistanceUnit.swift */; };
 		549BF5EB28F0C09B00323163 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 549BF5ED28F0C09B00323163 /* Localizable.strings */; };
 		549BF5FD28F4B8AA00323163 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 549BF5ED28F0C09B00323163 /* Localizable.strings */; };
 		549BF5FE28F60D8E00323163 /* SampleWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 549BF60128F60D8E00323163 /* SampleWidget.intentdefinition */; };
@@ -105,6 +108,7 @@
 		5410AA0128EE4D43005EC200 /* SampleWidgetMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleWidgetMediumView.swift; sourceTree = "<group>"; };
 		5410AA0328EE4D52005EC200 /* SampleWidgetAccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleWidgetAccessoryRectangularView.swift; sourceTree = "<group>"; };
 		5410AA0528EE5B47005EC200 /* SampleWidgetMockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleWidgetMockView.swift; sourceTree = "<group>"; };
+		5457831E290B18340032B7A3 /* Double+DistanceUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+DistanceUnit.swift"; sourceTree = "<group>"; };
 		549BF5E728F0BFF800323163 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		549BF5E828F0C02500323163 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		549BF5EC28F0C09B00323163 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				62ECCB5C244E1A4200AE8BE1 /* Info.plist */,
 				62E6DAF3244E304C00EC2C02 /* InfoPlist.strings */,
 				549BF5ED28F0C09B00323163 /* Localizable.strings */,
+				5457831E290B18340032B7A3 /* Double+DistanceUnit.swift */,
 			);
 			path = "bitrise-screenshot-automation";
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				5410A9FA28EE49B3005EC200 /* SampleWidgetEntry.swift in Sources */,
 				5410A9FC28EE49EA005EC200 /* SampleWidgetEntryView.swift in Sources */,
 				5410AA0628EE5B47005EC200 /* SampleWidgetMockView.swift in Sources */,
+				54578320290B1AC10032B7A3 /* Double+DistanceUnit.swift in Sources */,
 				5410AA0428EE4D52005EC200 /* SampleWidgetAccessoryRectangularView.swift in Sources */,
 				5410AA0028EE4D35005EC200 /* SampleWidgetSmallView.swift in Sources */,
 				5410A9FE28EE4A4D005EC200 /* SampleWidgetTimelineProvider.swift in Sources */,
@@ -547,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C8B20E244ECCA800C1AC78 /* TodayViewController.swift in Sources */,
+				54578321290B1ADA0032B7A3 /* Double+DistanceUnit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +564,7 @@
 				549BF5FE28F60D8E00323163 /* SampleWidget.intentdefinition in Sources */,
 				54CDC8592901EB8F006365B1 /* SampleShortcutSnippet.swift in Sources */,
 				62ECCB53244E1A3F00AE8BE1 /* DarkMapViewController.swift in Sources */,
+				5457831F290B18340032B7A3 /* Double+DistanceUnit.swift in Sources */,
 				62ECCB4F244E1A3F00AE8BE1 /* AppDelegate.swift in Sources */,
 				54CDC8572901E5B4006365B1 /* SampleAppIntent.swift in Sources */,
 				54CDC8552901E5A8006365B1 /* AppShortcutProvider.swift in Sources */,

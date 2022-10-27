@@ -58,9 +58,15 @@
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
       <RemoteRunnable
-         runnableDebuggingMode = "1"
-         BundleIdentifier = "com.coulomb.ChargePoint"
-         RemotePath = "/Users/rishabsukumar/Library/Developer/CoreSimulator/Devices/ADF7EE09-943A-4462-99B5-6E8E769B4EB7/data/Containers/Bundle/Application/4A3F38BF-CCB9-46AA-9C71-2D8AE17F2323/CP-QA.app">
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5410A9E428ECF7E5005EC200"
+            BuildableName = "SampleWidgetExtension.appex"
+            BlueprintName = "SampleWidgetExtension"
+            ReferencedContainer = "container:bitrise-screenshot-automation.xcodeproj">
+         </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
@@ -71,6 +77,13 @@
             ReferencedContainer = "container:bitrise-screenshot-automation.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "_XCWidgetFamily"
+            value = "small"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
