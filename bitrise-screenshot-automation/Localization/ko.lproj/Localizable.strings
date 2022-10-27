@@ -23,6 +23,9 @@
 "Nearby Chargers" = "주변 충전기";
 
 /* No comment provided by engineer. */
+"Run sample with Chargy" = "Chargy으로 샘플 실행";
+
+/* No comment provided by engineer. */
 "Run sample with ${applicationName}" = "${applicationName}으로 샘플 실행";
 
 /* No comment provided by engineer. */

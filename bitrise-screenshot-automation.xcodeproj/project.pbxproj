@@ -29,6 +29,8 @@
 		54CDC8552901E5A8006365B1 /* AppShortcutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CDC8542901E5A8006365B1 /* AppShortcutProvider.swift */; };
 		54CDC8572901E5B4006365B1 /* SampleAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CDC8562901E5B4006365B1 /* SampleAppIntent.swift */; };
 		54CDC8592901EB8F006365B1 /* SampleShortcutSnippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CDC8582901EB8F006365B1 /* SampleShortcutSnippet.swift */; };
+		54DD7221290B46A1004BA89A /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54DD7223290B46A1004BA89A /* AppShortcuts.strings */; };
+		54DD7228290B4B5F004BA89A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 549BF5ED28F0C09B00323163 /* Localizable.strings */; };
 		62C8B20B244ECCA800C1AC78 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */; };
 		62C8B20E244ECCA800C1AC78 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */; };
 		62C8B211244ECCA800C1AC78 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */; };
@@ -122,6 +124,9 @@
 		54CDC8542901E5A8006365B1 /* AppShortcutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcutProvider.swift; sourceTree = "<group>"; };
 		54CDC8562901E5B4006365B1 /* SampleAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppIntent.swift; sourceTree = "<group>"; };
 		54CDC8582901EB8F006365B1 /* SampleShortcutSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleShortcutSnippet.swift; sourceTree = "<group>"; };
+		54DD7222290B46A1004BA89A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		54DD7224290B46A3004BA89A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		54DD7225290B46A4004BA89A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		62C8B209244ECCA800C1AC78 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +231,7 @@
 				54CDC8542901E5A8006365B1 /* AppShortcutProvider.swift */,
 				54CDC8562901E5B4006365B1 /* SampleAppIntent.swift */,
 				54CDC8582901EB8F006365B1 /* SampleShortcutSnippet.swift */,
+				54DD7223290B46A1004BA89A /* AppShortcuts.strings */,
 			);
 			path = AppIntents;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62ECCB5B244E1A4200AE8BE1 /* LaunchScreen.storyboard in Resources */,
+				54DD7221290B46A1004BA89A /* AppShortcuts.strings in Resources */,
 				549BF5EB28F0C09B00323163 /* Localizable.strings in Resources */,
 				62ECCB81244E21BB00AE8BE1 /* Sanity.xctestplan in Resources */,
 				62ECCB58244E1A4200AE8BE1 /* Assets.xcassets in Resources */,
@@ -525,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DD7228290B4B5F004BA89A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +642,16 @@
 				549BF60528F60D9300323163 /* ko */,
 			);
 			name = SampleWidget.intentdefinition;
+			sourceTree = "<group>";
+		};
+		54DD7223290B46A1004BA89A /* AppShortcuts.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				54DD7222290B46A1004BA89A /* en */,
+				54DD7224290B46A3004BA89A /* de */,
+				54DD7225290B46A4004BA89A /* ko */,
+			);
+			name = AppShortcuts.strings;
 			sourceTree = "<group>";
 		};
 		62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */ = {
@@ -840,6 +858,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Chargy;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -894,6 +913,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Chargy;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -950,6 +970,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LF3ZYA4TZA;
 				INFOPLIST_FILE = "bitrise-screenshot-automationTests/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Chargy;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -972,6 +993,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LF3ZYA4TZA;
 				INFOPLIST_FILE = "bitrise-screenshot-automationTests/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Chargy;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -990,9 +1012,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LF3ZYA4TZA;
 				INFOPLIST_FILE = "bitrise-screenshot-automationUITests/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1010,9 +1034,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LF3ZYA4TZA;
 				INFOPLIST_FILE = "bitrise-screenshot-automationUITests/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

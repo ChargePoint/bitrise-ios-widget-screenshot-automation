@@ -23,6 +23,9 @@
 "Nearby Chargers" = "Ladegeräte in der Nähe";
 
 /* No comment provided by engineer. */
+"Run sample with Chargy" = "Beispiel mit Chargy ausführen";
+
+/* No comment provided by engineer. */
 "Run sample with ${applicationName}" = "Beispiel mit ${applicationName} ausführen";
 
 /* No comment provided by engineer. */
