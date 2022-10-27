@@ -36,34 +36,60 @@ class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPick
     @IBOutlet weak var mapView: MKMapView?
     @IBOutlet var locationPickerView: UIPickerView!
     @IBOutlet weak var zoomButton: UIButton?
-
+    
     var locationManager: CLLocationManager?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.locationPickerView.delegate = self
         self.locationPickerView.dataSource = self
+        zoomButton?.accessibilityIdentifier = "ZoomButton"
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         self.requestLocationPermission()
     }
-
+    
     func requestLocationPermission() {
         if self.locationManager == nil {
             let locationManager = CLLocationManager()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
             locationManager.requestWhenInUseAuthorization()
-
+            
             self.locationManager = locationManager
         }
     }
-
+    
+    func requestAndSendNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            
+            guard error == nil else {
+                return
+            }
+            let center = UNUserNotificationCenter.current()
+            
+            let content = UNMutableNotificationContent()
+            content.title = NSLocalizedString("Charging Notification", comment: "")
+            content.body = NSLocalizedString("Your vehicle has finished charging",comment: "")
+            content.categoryIdentifier = "alarm"
+            content.sound = UNNotificationSound.default
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+        }
+    }
+    
     @IBAction func zoomToCityTapped() {
+        
+        // send a notification for testing
+        requestAndSendNotifications()
         // Do nothing for now
         let city = self.locationList[self.locationPickerView.selectedRow(inComponent: 0)]
         switch city {
@@ -99,6 +125,6 @@ class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.locationList[row].description
     }
-
+    
 }
 
