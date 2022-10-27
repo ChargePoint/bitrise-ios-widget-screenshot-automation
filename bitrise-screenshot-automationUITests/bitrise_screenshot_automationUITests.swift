@@ -71,10 +71,10 @@ extension XCUIElementQuery {
 class bitrise_screenshot_automationUITests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
+        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
+        
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
         
         // UI tests must launch the application that they test.
@@ -83,11 +83,11 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         // Set up interruption handler
         self.handleAlerts(app: app)
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testMainViewScreenshot() throws {
         let app = XCUIApplication()
         
@@ -95,27 +95,27 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         // we set up in the storyboard
         let darkMapVCView = app.otherElements["Dark Map View"];
         XCTAssertTrue(darkMapVCView.waitForExistence(timeout: 3))
-
+        
         // Now let's get a screenshot & save it to the xcresult as an attachment
         self.saveScreenshot("MyAutomation_darkMapView")
     }
-
+    
     func testTodayWidgetScreenshot() throws {
         let app = XCUIApplication()
         // The springboard app allows you to navigate the home screen
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.activate()
-
+        
         // Swipe until we get to the Today View
         springboard.swipe(direction: .Right, numSwipes: 2)
         
         // Swipe until edit button is visible
         springboard.swipe(direction: .Up, numSwipes: 2)
-
+        
         let editButton = springboard.buttons.firstMatch
         XCTAssertTrue(editButton.waitForExistence(timeout: 3))
         editButton.tap()
-
+        
         // Swipe until Customize button is visible
         springboard.swipe(direction: .Up, numSwipes: 3)
         
@@ -134,17 +134,17 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         default:
             break
         }
-    
+        
         customizeButton.tap()
         
         // Find and tap to add the TodayWidget
         let widgetNamePredicate = NSPredicate(format: "label CONTAINS[c] 'TodayWidget'")
         let addWidgetCells = springboard.cells.matching(widgetNamePredicate)
         addWidgetCells.buttons.firstMatch.tap()
-
+        
         let doneButton = springboard.navigationBars.buttons.secondMatch
         doneButton.tap()
-
+        
         springboard.swipe(direction: .Up, numSwipes: 1)
         let todayLabel = springboard.staticTexts["Today Label"]
         XCTAssertTrue(todayLabel.waitForExistence(timeout: 3))
@@ -189,7 +189,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         // Press and hold to edit lock screen
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.press(forDuration: 3)
-    
+        
         // Tap Customize
         springboard.buttons.matching(identifier: "posterboard-customize-button").firstMatch.tap()
         
@@ -217,7 +217,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
     func editLockScreenWidget() {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.press(forDuration: 3)
-    
+        
         springboard.buttons.matching(identifier: "posterboard-customize-button").firstMatch.tap()
         
         springboard.collectionViews["posterboard-collection-view"].cells.firstMatch.tap()
@@ -251,7 +251,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
     func removeLockScreenWidget() {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.press(forDuration: 3)
-    
+        
         springboard.buttons.matching(identifier: "posterboard-customize-button").firstMatch.tap()
         
         springboard.collectionViews["posterboard-collection-view"].cells.firstMatch.tap()
@@ -283,7 +283,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         sleep(3)
         
         self.saveScreenshot("MyAutomation_configuredHomeScreenWidget")
-                
+        
         removeHomeScreenWidget()
         removeHomeScreenWidget()
     }
@@ -326,7 +326,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         springboard.press(forDuration: 3)
         
         springboard.buttons.firstMatch.tap()
-
+        
         springboard.searchFields.firstMatch.tap()
         
         springboard.typeText("bitrise-screenshot-automation")
@@ -352,9 +352,9 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         self.saveScreenshot("MyAutomation_sampleSiriShortcut")
     }
-
+    
     func testNotificationCenter() {
-
+        
         let app = XCUIApplication()
         let button = app.buttons["ZoomButton"]
         XCTAssertTrue(button.exists)
@@ -362,20 +362,21 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         handleAlerts(app: app)
         // wait until the notifications permissions is accepted
         // Springboard allows us to interact with the home screen
-
-            let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-
-            springboard.activate()
-            // Swipe down from the top to get to the lock screen to view notifications
-            sleep(2)
-            let coord1 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
-
-            let coord2 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 2))
-
-            coord1.press(forDuration: 0.1, thenDragTo: coord2)
-
-            self.saveScreenshot("MyAutomation_Notification")
-
-        }
+        
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        
+        springboard.activate()
+        // wait to make sure notification is sent
+        sleep(2)
+        // Swipe down from the top to get to the lock screen to view notifications
+        let coord1 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        
+        let coord2 = springboard.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 2))
+        
+        coord1.press(forDuration: 0.1, thenDragTo: coord2)
+        
+        self.saveScreenshot("MyAutomation_Notification")
+        
+    }
     
 }
