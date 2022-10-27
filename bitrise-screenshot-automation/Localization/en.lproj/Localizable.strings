@@ -1,14 +1,23 @@
 /* No comment provided by engineer. */
+"%.1f ft" = "%.1f ft";
+
+/* No comment provided by engineer. */
+"%.1f km" = "%.1f km";
+
+/* No comment provided by engineer. */
+"%.1f m" = "%.1f m";
+
+/* No comment provided by engineer. */
+"%.1f mi" = "%.1f mi";
+
+/* No comment provided by engineer. */
 "Edit configuration to explore a location." = "Edit configuration to explore a location.";
 
 /* No comment provided by engineer. */
 "Explore your favorite cities." = "Explore your favorite cities.";
 
 /* No comment provided by engineer. */
-"Places near %@" = "Places near %@";
-
-/* No comment provided by engineer. */
-"Places near San Jose" = "Places near San Jose";
+"Nearby Chargers" = "Nearby Chargers";
 
 /* No comment provided by engineer. */
 "Run sample with ${applicationName}" = "Run sample with ${applicationName}";
@@ -30,4 +39,6 @@
 
 /* No comment provided by engineer. */
 "Your vehicle has finished charging" = "Your vehicle has finished charging";
+
+"Updated: " = "Updated: ";
 

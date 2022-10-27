@@ -1,14 +1,23 @@
 /* No comment provided by engineer. */
+"%.1f ft" = "%.1f ft";
+
+/* No comment provided by engineer. */
+"%.1f km" = "%.1f km";
+
+/* No comment provided by engineer. */
+"%.1f m" = "%.1f m";
+
+/* No comment provided by engineer. */
+"%.1f mi" = "%.1f mi";
+
+/* No comment provided by engineer. */
 "Edit configuration to explore a location." = "위치를 탐색하려면 구성을 수정하세요.";
 
 /* No comment provided by engineer. */
 "Explore your favorite cities." = "좋아하는 도시를 탐험하세요.";
 
 /* No comment provided by engineer. */
-"Places near %@" = "%@ 주변 장소";
-
-/* No comment provided by engineer. */
-"Places near San Jose" = "산호세 주변 장소";
+"Nearby Chargers" = "주변 충전기";
 
 /* No comment provided by engineer. */
 "Run sample with ${applicationName}" = "${applicationName}으로 샘플 실행";
@@ -26,7 +35,10 @@
 "This is a Sample Shortcut." = "샘플 바로가기입니다.";
 
 /* No comment provided by engineer. */
+
 "Charging Notification" = "충전 알림";
 
 /* No comment provided by engineer. */
 "Your vehicle has finished charging" = "차량 충전이 완료되었습니다";
+
+"Updated: " = "업데이트됨: ";

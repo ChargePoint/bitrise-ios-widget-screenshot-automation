@@ -17,7 +17,6 @@ struct SampleWidgetMockView: View {
             Text("Nearby Chargers")
                 .font(.footnote)
                 .bold()
-                .fixedSize(horizontal: false, vertical: true)
             Divider()
                 .padding(.top, 5)
                 .padding(.bottom, 8)

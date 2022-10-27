@@ -20,7 +20,6 @@ struct SampleWidgetMediumView: View {
                 Text("Nearby Chargers")
                     .font(.footnote)
                     .bold()
-                    .fixedSize(horizontal: false, vertical: true)
                 Divider()
                     .padding(.bottom, 8)
                     .padding(.top, 5)
