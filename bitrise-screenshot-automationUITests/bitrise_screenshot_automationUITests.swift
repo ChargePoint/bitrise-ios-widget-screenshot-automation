@@ -360,9 +360,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         XCTAssertTrue(button.exists)
         button.tap()
         handleAlerts(app: app)
-        // wait until the notifications permissions is accepted
         // Springboard allows us to interact with the home screen
-        
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         
         springboard.activate()
