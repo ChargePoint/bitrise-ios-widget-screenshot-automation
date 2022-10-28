@@ -378,4 +378,18 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
     }
     
+    func testAppSettings() {
+        // Access the Settings app using its bundle identifier
+        let settings = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+
+        settings.activate()
+
+        settings.swipe(direction: .Up, numSwipes: 4)
+        // Navigate to our app's settings
+        settings.cells["Chargy"].tap()
+
+        // Save App Settings Screenshot
+        self.saveScreenshot("MyAutomation_AppSettings")
+    }
+    
 }
