@@ -346,11 +346,8 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.activate()
         
-        let uiTestBundle = Bundle(for: bitrise_screenshot_automationUITests.self)
-        let localizedString = "Run sample with Chargy"
-        
         // Use XCUISiriService to pass text to Siri and invoke App Shortcut
-        XCUIDevice.shared.siriService.activate(voiceRecognitionText: localizedString)
+        XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Run sample with Chargy")
         
         sleep(3)
         
