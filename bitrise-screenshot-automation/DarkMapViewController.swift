@@ -10,15 +10,12 @@ import MapKit
 import UIKit
 
 enum ZoomLocation {
-    case Default
     case SanFrancisco
     case NewYork
     case Chicago
     
     var description: String {
         switch self {
-        case .Default:
-            return "Default"
         case .SanFrancisco:
             return "San Francisco"
         case .NewYork:
@@ -29,9 +26,11 @@ enum ZoomLocation {
     }
 }
 
-class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-    var locationList: [ZoomLocation] = [.Default, .SanFrancisco, .NewYork, .Chicago]
-    var coordinateDict: Dictionary<ZoomLocation, (Double, Double)> = [.Default: (54.5260, -105.2551), .SanFrancisco: (37.7749, -122.4194), .NewYork: (40.7128, -74.0060), .Chicago: (41.8781, -87.6298)]
+class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MKMapViewDelegate {
+    var locationList: [ZoomLocation] = [.SanFrancisco, .NewYork, .Chicago]
+    let stationStatusColors = [UIColor.green, UIColor.green, UIColor.gray, UIColor.blue]
+    var coordinateDict: Dictionary<ZoomLocation, (Double, Double)> = [.SanFrancisco: (37.7749, -122.4194), .NewYork: (40.7128, -74.0060), .Chicago: (41.8781, -87.6298)]
+    var annotationCoordDict: Dictionary<ZoomLocation, [CLLocationCoordinate2D]> = [.SanFrancisco: [CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4494), CLLocationCoordinate2D(latitude: 37.7649, longitude: -122.4094), CLLocationCoordinate2D(latitude: 37.7849, longitude: -122.4094), CLLocationCoordinate2D(latitude: 37.7949, longitude: -122.4354), CLLocationCoordinate2D(latitude: 37.7509, longitude: -122.4244)], .NewYork: [CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060), CLLocationCoordinate2D(latitude: 40.7228, longitude: -74.0360), CLLocationCoordinate2D(latitude: 40.6928, longitude: -73.9860), CLLocationCoordinate2D(latitude: 40.7428, longitude: -73.9999), CLLocationCoordinate2D(latitude: 40.6828, longitude: -73.9940)], .Chicago: [CLLocationCoordinate2D(latitude: 41.8781, longitude: -87.6298), CLLocationCoordinate2D(latitude: 41.8981, longitude: -87.6498), CLLocationCoordinate2D(latitude: 41.8381, longitude: -87.6598), CLLocationCoordinate2D(latitude: 41.8681, longitude: -87.6498), CLLocationCoordinate2D(latitude: 41.8831, longitude: -87.6438)]]
     
     @IBOutlet weak var mapView: MKMapView?
     @IBOutlet var locationPickerView: UIPickerView!
@@ -44,7 +43,16 @@ class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPick
         // Do any additional setup after loading the view.
         self.locationPickerView.delegate = self
         self.locationPickerView.dataSource = self
+
         zoomButton?.accessibilityIdentifier = "ZoomButton"
+        
+        self.mapView?.delegate = self
+        let (centerLatitude, centerLongitude) = self.coordinateDict[.SanFrancisco] ?? (0, 0)
+        self.zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 8000, longitudinalMeters: 8000)
+        
+        self.addAnnotations(location: .SanFrancisco)
+        self.addAnnotations(location: .NewYork)
+        self.addAnnotations(location: .Chicago)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,18 +101,15 @@ class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPick
         // Do nothing for now
         let city = self.locationList[self.locationPickerView.selectedRow(inComponent: 0)]
         switch city {
-        case .Default:
-            let (centerLatitude, centerLongitude) = self.coordinateDict[.Default] ?? (0, 0)
-            zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 6000000, longitudinalMeters: 6000000)
         case .SanFrancisco:
             let (centerLatitude, centerLongitude) = self.coordinateDict[.SanFrancisco] ?? (0, 0)
-            zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 50000, longitudinalMeters: 50000)
+            zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 8000, longitudinalMeters: 8000)
         case .NewYork:
             let (centerLatitude, centerLongitude) = self.coordinateDict[.NewYork] ?? (0, 0)
-            zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 50000, longitudinalMeters: 50000)
+            zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 8000, longitudinalMeters: 8000)
         case .Chicago:
             let (centerLatitude, centerLongitude) = self.coordinateDict[.Chicago] ?? (0, 0)
-            zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 50000, longitudinalMeters: 50000)
+            zoomToLocation(latitude: centerLatitude, longitude: centerLongitude, latitudinalMeters: 8000, longitudinalMeters: 8000)
         }
     }
     
@@ -114,17 +119,47 @@ class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPick
         self.mapView?.setRegion(region, animated: true)
     }
     
+    func addAnnotations(location: ZoomLocation) {
+        if let points = annotationCoordDict[location] {
+            for point in points {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = point
+                mapView?.addAnnotation(annotation)
+            }
+        }
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 4
+        return 3
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.locationList[row].description
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "ChargerPin"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if (annotationView == nil) {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = false
+            let annotationImage = UIImage(systemName: "bolt.circle.fill")?.withTintColor(stationStatusColors.randomElement() ?? UIColor.green).withRenderingMode(.alwaysTemplate)
+            let size = CGSize(width: 30, height: 30)
+            annotationView?.image = UIGraphicsImageRenderer(size: size).image {
+                _ in annotationImage?.draw(in: CGRect(origin:.zero, size: size))
+            }
+            
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
+    }
 }
 
