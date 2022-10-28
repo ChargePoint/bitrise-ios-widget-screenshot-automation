@@ -31,17 +31,21 @@ struct Provider: IntentTimelineProvider {
         
         var pointsOfInterest: [MKMapItem] = []
         if let location = configuration.Location?.location {
-            let request = MKLocalPointsOfInterestRequest(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), radius: 500)
+            let configLocationCenter = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let request = MKLocalPointsOfInterestRequest(center: configLocationCenter, radius: 500)
             let search = MKLocalSearch(request: request)
             search.start { response, error in
                 pointsOfInterest = response?.mapItems ?? []
-                var poiStrings: [String] = []
+                var pois: [PointOfInterest] = []
                 for poi in pointsOfInterest {
+                    let poiCoords = poi.placemark.coordinate
+                    let distance = location.distance(from: CLLocation(latitude: poiCoords.latitude, longitude: poiCoords.longitude))
+                    
                     if let name = poi.name {
-                        poiStrings.append(name)
+                        pois.append(PointOfInterest(name: name, distance: distance))
                     }
                 }
-                let entry = SampleWidgetEntry(date: entryDate, pointsOfInterest: poiStrings, configuration: configuration, viewType: .LocationSelected)
+                let entry = SampleWidgetEntry(date: entryDate, pointsOfInterest: pois, configuration: configuration, viewType: .LocationSelected)
                 entries.append(entry)
 
                 let timeline = Timeline(entries: entries, policy: .atEnd)

@@ -1,0 +1,3 @@
+"Test sample with ${applicationName}" = "${applicationName}을 사용한 테스트 샘플";
+
+"Run sample with ${applicationName}" = "${applicationName}으로 샘플 실행";

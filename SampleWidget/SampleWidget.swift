@@ -19,8 +19,8 @@ struct SampleWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectLocationIntent.self, provider: Provider()) { entry in
             SampleWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description(NSLocalizedString("Explore your favorite cities.", comment: ""))
+        .configurationDisplayName("Nearby Chargers")
+        .description(NSLocalizedString("Find chargers near you", comment: ""))
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular])
     }
 }

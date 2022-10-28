@@ -15,11 +15,21 @@ enum SampleWidgetViewType {
     case LocationSelected
 }
 
+struct PointOfInterest {
+    let name: String
+    let distance: Double
+    
+    init(name: String, distance: Double) {
+        self.name = name
+        self.distance = distance
+    }
+}
+
 struct SampleWidgetEntry: TimelineEntry {
     let date: Date
-    let pointsOfInterest: [String]
+    let pointsOfInterest: [PointOfInterest]
     let configuration: SelectLocationIntent
     let viewType: SampleWidgetViewType
 }
 
-let mockPOIs = ["CineArts", "Santana Row", "Westfield Valley Fair"]
+let mockPOIs = [PointOfInterest(name: "CineArts", distance: 0.4), PointOfInterest(name: "Santana Row", distance: 0.6), PointOfInterest(name: "Westfield Valley Fair", distance: 1.4)]

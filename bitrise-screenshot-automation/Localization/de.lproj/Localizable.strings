@@ -1,14 +1,29 @@
 /* No comment provided by engineer. */
+"%.1f ft" = "%.1f ft";
+
+/* No comment provided by engineer. */
+"%.1f km" = "%.1f km";
+
+/* No comment provided by engineer. */
+"%.1f m" = "%.1f m";
+
+/* No comment provided by engineer. */
+"%.1f mi" = "%.1f mi";
+
+/* No comment provided by engineer. */
 "Edit configuration to explore a location." = "Bearbeiten Sie die Konfiguration, um einen Ort zu erkunden.";
+
+/* No comment provided by engineer. */
+"Find chargers near you" = "Finden Sie Ladegeräte in Ihrer Nähe";
 
 /* No comment provided by engineer. */
 "Explore your favorite cities." = "Entdecken Sie Ihre Lieblingsstädte.";
 
 /* No comment provided by engineer. */
-"Places near %@" = "Orte in der Nähe von %@";
+"Nearby Chargers" = "Ladegeräte in der Nähe";
 
 /* No comment provided by engineer. */
-"Places near San Jose" = "Orte in der Nähe von San José";
+"Run sample with Chargy" = "Beispiel mit Chargy ausführen";
 
 /* No comment provided by engineer. */
 "Run sample with ${applicationName}" = "Beispiel mit ${applicationName} ausführen";
@@ -30,3 +45,5 @@
 
 /* No comment provided by engineer. */
 "Your vehicle has finished charging" = "Ihr Fahrzeug ist fertig aufgeladen";
+
+"Updated: " = "Aktualisiert: ";

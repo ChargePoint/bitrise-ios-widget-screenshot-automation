@@ -12,19 +12,20 @@ import MapKit
 
 struct SampleWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
+    let stationStatusColors: [Color] = [Color.green, Color.green, Color.gray, Color.blue]
     var entry: Provider.Entry
     var body: some View {
         switch entry.viewType {
         case .LocationSelected:
             switch family {
             case .systemSmall:
-                SampleWidgetSmallView(locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
+                SampleWidgetSmallView(stationStatusColors:stationStatusColors, locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
             case.systemMedium:
-                SampleWidgetMediumView(locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
+                SampleWidgetMediumView(stationStatusColors:stationStatusColors, locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
             case.accessoryRectangular:
-                SampleWidgetAccessoryRectangularView(locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
+                SampleWidgetAccessoryRectangularView(stationStatusColors:stationStatusColors, locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
             default:
-                SampleWidgetMediumView(locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
+                SampleWidgetMediumView(stationStatusColors:stationStatusColors, locationName: entry.configuration.Location?.name, poiList: entry.pointsOfInterest)
             }
         case .Preview:
             SampleWidgetMockView()

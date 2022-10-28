@@ -201,7 +201,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         posterboard.buttons.lastMatch.tap()
         
-        posterboard.cells["bitrise-screenshot-automation"].tap()
+        posterboard.cells["Chargy"].tap()
         
         springboard.buttons.lastMatch.tap()
         
@@ -291,7 +291,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
     func editHomeScreenWidgetConfig() {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.press(forDuration: 3)
-        springboard.icons.matching(identifier: "bitrise-screenshot-automation").firstMatch.tap()
+        springboard.icons.matching(identifier: "Chargy").firstMatch.tap()
         
         // Use WidgetConfigurationExtension XCUIApplication to navigate the home screen widget configuration
         let widgetConfig = XCUIApplication(bundleIdentifier: "com.apple.WorkflowUI.WidgetConfigurationExtension")
@@ -316,7 +316,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.press(forDuration: 3)
         
-        springboard.icons.matching(identifier: "bitrise-screenshot-automation").firstMatch.buttons["DeleteButton"].tap()
+        springboard.icons.matching(identifier: "Chargy").firstMatch.buttons["DeleteButton"].tap()
         springboard.alerts.firstMatch.buttons.lastMatch.tap()
         springboard.buttons.secondMatch.tap()
     }
@@ -329,8 +329,8 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
         springboard.searchFields.firstMatch.tap()
         
-        springboard.typeText("bitrise-screenshot-automation")
-        springboard.collectionViews.cells["bitrise-screenshot-automation"].tap()
+        springboard.typeText("Chargy")
+        springboard.collectionViews.cells["Chargy"].tap()
         
         // Swipe to medium size widget if parameter passed is true
         if (isMediumSize) {
@@ -345,8 +345,12 @@ class bitrise_screenshot_automationUITests: XCTestCase {
     func testSiriShortcut() {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         springboard.activate()
+        
+        let uiTestBundle = Bundle(for: bitrise_screenshot_automationUITests.self)
+        let localizedString = "Run sample with Chargy"
+        
         // Use XCUISiriService to pass text to Siri and invoke App Shortcut
-        XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Run sample with bitrise-screenshot-automation")
+        XCUIDevice.shared.siriService.activate(voiceRecognitionText: localizedString)
         
         sleep(3)
         
