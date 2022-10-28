@@ -28,7 +28,12 @@ enum ZoomLocation {
 
 class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MKMapViewDelegate {
     var locationList: [ZoomLocation] = [.SanFrancisco, .NewYork, .Chicago]
-    let stationStatusColors = [UIColor.green, UIColor.green, UIColor.gray, UIColor.blue]
+    let stationStatusColors = [
+        UIColor(red: 0.2039, green: 0.7804, blue: 0.3490, alpha: 1),
+        UIColor(red: 0.2039, green: 0.7804, blue: 0.3490, alpha: 1),
+        UIColor(red: 0.5569, green: 0.5569, blue: 0.5765, alpha: 1),
+        UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1)
+    ]
     var coordinateDict: Dictionary<ZoomLocation, (Double, Double)> = [.SanFrancisco: (37.7749, -122.4194), .NewYork: (40.7128, -74.0060), .Chicago: (41.8781, -87.6298)]
     var annotationCoordDict: Dictionary<ZoomLocation, [CLLocationCoordinate2D]> = [.SanFrancisco: [CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4494), CLLocationCoordinate2D(latitude: 37.7649, longitude: -122.4094), CLLocationCoordinate2D(latitude: 37.7849, longitude: -122.4094), CLLocationCoordinate2D(latitude: 37.7949, longitude: -122.4354), CLLocationCoordinate2D(latitude: 37.7509, longitude: -122.4244)], .NewYork: [CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060), CLLocationCoordinate2D(latitude: 40.7228, longitude: -74.0360), CLLocationCoordinate2D(latitude: 40.6928, longitude: -73.9860), CLLocationCoordinate2D(latitude: 40.7428, longitude: -73.9999), CLLocationCoordinate2D(latitude: 40.6828, longitude: -73.9940)], .Chicago: [CLLocationCoordinate2D(latitude: 41.8781, longitude: -87.6298), CLLocationCoordinate2D(latitude: 41.8981, longitude: -87.6498), CLLocationCoordinate2D(latitude: 41.8381, longitude: -87.6598), CLLocationCoordinate2D(latitude: 41.8681, longitude: -87.6498), CLLocationCoordinate2D(latitude: 41.8831, longitude: -87.6438)]]
     
@@ -149,12 +154,19 @@ class DarkMapViewController: UIViewController, CLLocationManagerDelegate, UIPick
         if (annotationView == nil) {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = false
-            let annotationImage = UIImage(systemName: "bolt.circle.fill")?.withTintColor(stationStatusColors.randomElement() ?? UIColor.green).withRenderingMode(.alwaysTemplate)
+            let annotationImage = UIImage(systemName: "bolt.circle.fill")?.withTintColor(stationStatusColors.randomElement() ?? UIColor(red: 0.2039, green: 0.7804, blue: 0.3490, alpha: 1))
             let size = CGSize(width: 30, height: 30)
             annotationView?.image = UIGraphicsImageRenderer(size: size).image {
                 _ in annotationImage?.draw(in: CGRect(origin:.zero, size: size))
             }
             
+            annotationView?.layer.cornerRadius = (annotationView?.frame.height ?? 1)/2
+            annotationView?.layer.backgroundColor = UIColor.white.cgColor
+            annotationView?.layer.shadowColor = UIColor.black.cgColor
+            annotationView?.layer.shadowOpacity = 0.25
+            annotationView?.layer.shadowOffset = .zero
+            annotationView?.layer.shadowRadius = 10
+            annotationView?.layer.shadowPath = UIBezierPath(rect: annotationView?.bounds ?? CGRectZero).cgPath
         } else {
             annotationView?.annotation = annotation
         }
