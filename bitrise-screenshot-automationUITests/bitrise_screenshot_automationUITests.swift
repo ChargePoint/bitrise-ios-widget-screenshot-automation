@@ -378,6 +378,10 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         
     }
     
+    // Commenting out since the app does not show up
+    // in settings when a UI test is running.
+    // This causes the test to fail.
+    /*
     func testAppSettings() {
         // Access the Settings app using its bundle identifier
         let settings = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
@@ -391,5 +395,6 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         // Save App Settings Screenshot
         self.saveScreenshot("MyAutomation_AppSettings")
     }
+    */
     
 }
